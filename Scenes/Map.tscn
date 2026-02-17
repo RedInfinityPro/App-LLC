@@ -1,0 +1,350 @@
+[gd_scene format=3 uid="uid://bc0aogp824vm8"]
+
+[ext_resource type="PackedScene" uid="uid://dbemu5gvmex0y" path="res://Scenes/Tanks/GreenTank.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://f2371lqgjuep" path="res://Scenes/Tanks/RedTank.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://smmejbskxtea" path="res://Scenes/Tanks/BlueTank.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Scenes/Packages/GasTank.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://Scenes/Packages/ToolKit.tscn" id="7"]
+
+[sub_resource type="GDScript" id="GDScript_qttiv"]
+script/source = "extends Node2D
+@export var gasTank : PackedScene 
+@export var toolKit : PackedScene
+@export var redTank : PackedScene
+@export var blueTank : PackedScene
+@export var greenTank : PackedScene
+@export var width := 150
+@export var height := 150
+@onready var tile_map = $TileMap
+@export var noise_height : NoiseTexture2D
+var noise : Noise
+var source_id = 0
+var grass_atlas = Vector2i(14, 0)
+var dirt_atlas = Vector2i(2, 2)
+# items
+var gasTankAmount = 5
+var toolKitAmount = 10
+var gasTankMap = []
+var toolKitMap = []
+var all_tanks = []
+# players
+var tankAmount = 5
+var player_picked = false
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	noise = noise_height.noise
+	noise.seed = int(Time.get_unix_time_from_system() + randi())
+	generate_world()
+	addTanks()
+	
+func generate_world():
+	for x in width:
+		for y in height:
+			var noiseValue = noise.get_noise_2d(x, y)
+			if noiseValue > 0.0:
+				tile_map.set_cell(0, Vector2(x,y), source_id, grass_atlas)
+			else:
+				tile_map.set_cell(0, Vector2(x,y), source_id, dirt_atlas)
+			
+func add_gasTank_Objects():
+	randomize()
+	var new_gasTank = gasTank.instantiate()
+	new_gasTank.global_position = Vector2(randi() % width, randi() % height) * 13
+	$TileMap.add_child(new_gasTank)
+	gasTankMap.append(new_gasTank)
+
+func add_toolKit_Objects():
+	randomize()
+	var new_toolKit = toolKit.instantiate()
+	new_toolKit.global_position = Vector2(randi() % width, randi() % height) * 13
+	$TileMap.add_child(new_toolKit)
+	toolKitMap.append(new_toolKit)
+
+func addTanks():
+	randomize()
+	var tankScenes = {
+		\"Blue\": blueTank,
+		\"Green\": greenTank,
+		\"Red\": redTank
+	}
+	for color in tankScenes.keys():
+		var scene = tankScenes[color]
+		if scene == null:
+			push_error(color + \" tank scene is not assigned!\")
+			continue
+		for i in tankAmount:
+			var tank_instance = scene.instantiate()
+			tank_instance.global_position = Vector2(
+				randi() % width,
+				randi() % height
+			) * 13
+			all_tanks.append(tank_instance)
+			$TileMap.add_child(tank_instance)
+	# Pick one random tank to be player-controlled
+	if all_tanks.size() > 0 and not player_picked:
+		var player_tank = all_tanks[randi() % all_tanks.size()]
+		var character = player_tank.get_node(\"CharacterBody2D\")
+		character.is_player = true
+		player_picked = true
+			
+func _process(delta: float) -> void:
+	if gasTankMap.size() < gasTankAmount:
+		add_gasTank_Objects()
+	if toolKitMap.size() < toolKitAmount:
+		add_toolKit_Objects()
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qttiv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s486e"]
+noise = SubResource("FastNoiseLite_qttiv")
+
+[sub_resource type="GDScript" id="GDScript_r08cw"]
+script/source = "extends Camera2D
+@export var speed := 5
+@export var zoom_step := 0.1
+@export var min_zoom := 0.5
+@export var max_zoom := 3.0
+var newVelocity := Vector2.ZERO
+@export var rotation_speed := 0
+
+func _unhandled_input(event):
+	if enabled:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+				zoom += Vector2.ONE * zoom_step
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+				zoom -= Vector2.ONE * zoom_step
+			# Clamp zoom so it doesn't go too far
+			zoom.x = clamp(zoom.x, min_zoom, max_zoom)
+			zoom.y = clamp(zoom.y, min_zoom, max_zoom)
+		
+func get_input(delta):
+	var input_dir := Vector2.ZERO
+	if enabled:
+		if Input.is_action_pressed(\"Player_Up\"):
+			input_dir.y -= 1
+		if Input.is_action_pressed(\"Player_Down\"):
+			input_dir.y += 1
+		if Input.is_action_pressed(\"Player_Left\"):
+			input_dir.x -= 1
+		if Input.is_action_pressed(\"Player_Right\"):
+			input_dir.x += 1
+	# move player
+	if input_dir != Vector2.ZERO:
+		input_dir = input_dir.normalized()
+		newVelocity = input_dir * speed
+		var target_rotation = input_dir.angle() - PI / 2
+		rotation = lerp_angle(rotation, target_rotation, rotation_speed * delta)
+	else:
+		newVelocity = Vector2.ZERO
+
+func _physics_process(delta):
+	get_input(delta)
+	position += newVelocity
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qttiv"]
+load_path = "res://.godot/imported/grass2ground_01_1.png-81ce3ad7d2e7c73457be50ff3cea033e.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s486e"]
+texture = SubResource("CompressedTexture2D_qttiv")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/next_alternative_id = 2
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7yn8b"]
+sources/0 = SubResource("TileSetAtlasSource_s486e")
+
+[node name="Map" type="Node2D" unique_id=187651217]
+script = SubResource("GDScript_qttiv")
+gasTank = ExtResource("6")
+toolKit = ExtResource("7")
+redTank = ExtResource("4")
+blueTank = ExtResource("5")
+greenTank = ExtResource("2")
+noise_height = SubResource("NoiseTexture2D_s486e")
+metadata/_edit_vertical_guides_ = [-503.0]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=483360289]
+enabled = false
+zoom = Vector2(0.5, 0.5)
+script = SubResource("GDScript_r08cw")
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1455515196]
+tile_set = SubResource("TileSet_7yn8b")
+format = 2

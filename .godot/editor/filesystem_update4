@@ -1,0 +1,6 @@
+res://default_env.tres
+res://Scenes/Map.tscn
+res://Scenes/Tanks/BlueTank.tscn
+res://Scenes/Tanks/GreenTank.tscn
+res://Scenes/Tanks/RedTank.tscn
+res://Scripts/playerController_script.gd

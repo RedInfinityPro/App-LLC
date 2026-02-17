@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://f2371lqgjuep"]
+
+[ext_resource type="Script" uid="uid://b1nvr4cfq1qyk" path="res://Scripts/playerController_script.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Scenes/Packages/BulletRed.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://dqf88mh43gwu1" path="res://Asset/Tank Sheet 2.png" id="4_x0v1w"]
+
+[sub_resource type="AtlasTexture" id="23"]
+region = Rect2(170, 201, 170, 201)
+
+[sub_resource type="AtlasTexture" id="24"]
+region = Rect2(340, 201, 170, 201)
+
+[sub_resource type="AtlasTexture" id="25"]
+region = Rect2(0, 201, 170, 201)
+
+[sub_resource type="AtlasTexture" id="26"]
+region = Rect2(0, 0, 170, 201)
+
+[sub_resource type="AtlasTexture" id="27"]
+region = Rect2(340, 0, 170, 201)
+
+[sub_resource type="AtlasTexture" id="28"]
+region = Rect2(170, 0, 170, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77536"]
+atlas = ExtResource("4_x0v1w")
+region = Rect2(0, 0, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b852b"]
+atlas = ExtResource("4_x0v1w")
+region = Rect2(67, 0, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxeeo"]
+atlas = ExtResource("4_x0v1w")
+region = Rect2(0, 50, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnkj7"]
+atlas = ExtResource("4_x0v1w")
+region = Rect2(67, 50, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqp5h"]
+atlas = ExtResource("4_x0v1w")
+region = Rect2(0, 100, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bywq4"]
+atlas = ExtResource("4_x0v1w")
+region = Rect2(67, 100, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxaqp"]
+atlas = ExtResource("4_x0v1w")
+region = Rect2(0, 150, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gg7d"]
+atlas = ExtResource("4_x0v1w")
+region = Rect2(67, 150, 65, 50)
+
+[sub_resource type="SpriteFrames" id="11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("23")
+}, {
+"duration": 1.0,
+"texture": SubResource("24")
+}, {
+"duration": 1.0,
+"texture": SubResource("25")
+}],
+"loop": true,
+"name": &"Blue Tank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("26")
+}, {
+"duration": 1.0,
+"texture": SubResource("27")
+}, {
+"duration": 1.0,
+"texture": SubResource("28")
+}],
+"loop": true,
+"name": &"Green Tank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77536")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b852b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxeeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnkj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqp5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bywq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxaqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gg7d")
+}],
+"loop": true,
+"name": &"Red Tank",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(61, 45)
+
+[node name="player" type="Node2D" unique_id=71380217]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=70253367]
+scale = Vector2(2, 2)
+script = ExtResource("1")
+Bullet = ExtResource("2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1752659158]
+sprite_frames = SubResource("11")
+animation = &"Red Tank"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=512462473]
+position = Vector2(-2.5, -2.5)
+shape = SubResource("1")
+
+[node name="gas_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=1398259584]
+offset_left = -33.5
+offset_top = 20.5
+offset_right = 28.0
+offset_bottom = 47.5
+
+[node name="health_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=686706718]
+offset_left = -33.0
+offset_top = 49.0
+offset_right = 28.0
+offset_bottom = 77.0
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1382422479]
