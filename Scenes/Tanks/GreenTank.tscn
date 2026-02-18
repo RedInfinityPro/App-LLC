@@ -4,73 +4,111 @@
 [ext_resource type="PackedScene" path="res://Scenes/Packages/BulletGreen.tscn" id="2_ajvvl"]
 [ext_resource type="Texture2D" uid="uid://dqf88mh43gwu1" path="res://Asset/Tank Sheet 2.png" id="4_h3wmx"]
 
-[sub_resource type="AtlasTexture" id="23"]
-region = Rect2(170, 201, 170, 201)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajvvl"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(268, 0, 65, 50)
 
-[sub_resource type="AtlasTexture" id="24"]
-region = Rect2(340, 201, 170, 201)
-
-[sub_resource type="AtlasTexture" id="25"]
-region = Rect2(0, 201, 170, 201)
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3wmx"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(335, 0, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mwim"]
 atlas = ExtResource("4_h3wmx")
-region = Rect2(134, 0, 65, 50)
+region = Rect2(268, 50, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rf4ro"]
 atlas = ExtResource("4_h3wmx")
-region = Rect2(201, 0, 65, 50)
+region = Rect2(335, 50, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxep7"]
 atlas = ExtResource("4_h3wmx")
-region = Rect2(134, 50, 65, 50)
+region = Rect2(268, 100, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dp3y"]
 atlas = ExtResource("4_h3wmx")
-region = Rect2(201, 50, 65, 50)
+region = Rect2(335, 100, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x25r3"]
 atlas = ExtResource("4_h3wmx")
-region = Rect2(134, 100, 65, 50)
+region = Rect2(268, 150, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwk4o"]
 atlas = ExtResource("4_h3wmx")
-region = Rect2(201, 100, 65, 50)
+region = Rect2(335, 150, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xudun"]
 atlas = ExtResource("4_h3wmx")
-region = Rect2(134, 150, 65, 50)
+region = Rect2(134, 0, 65, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2i56b"]
 atlas = ExtResource("4_h3wmx")
+region = Rect2(201, 0, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8yod"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(134, 50, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc3rv"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(201, 50, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbjmb"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(134, 100, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndbpg"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(201, 100, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06c1l"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(134, 150, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kff4"]
+atlas = ExtResource("4_h3wmx")
 region = Rect2(201, 150, 65, 50)
 
-[sub_resource type="AtlasTexture" id="29"]
-region = Rect2(0, 402, 170, 201)
+[sub_resource type="AtlasTexture" id="AtlasTexture_egodi"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(0, 0, 65, 50)
 
-[sub_resource type="AtlasTexture" id="30"]
-region = Rect2(170, 402, 170, 201)
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8hqw"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(67, 0, 65, 50)
 
-[sub_resource type="AtlasTexture" id="31"]
-region = Rect2(340, 402, 170, 201)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxmu4"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(0, 50, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrxkg"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(67, 50, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcgm6"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(0, 100, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i5ej"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(67, 100, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nxrb"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(0, 150, 65, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lkg4"]
+atlas = ExtResource("4_h3wmx")
+region = Rect2(67, 150, 65, 50)
 
 [sub_resource type="SpriteFrames" id="32"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("23")
+"texture": SubResource("AtlasTexture_ajvvl")
 }, {
 "duration": 1.0,
-"texture": SubResource("24")
+"texture": SubResource("AtlasTexture_h3wmx")
 }, {
-"duration": 1.0,
-"texture": SubResource("25")
-}],
-"loop": true,
-"name": &"Blue Tank",
-"speed": 5.0
-}, {
-"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7mwim")
 }, {
@@ -88,36 +126,89 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wwk4o")
+}],
+"loop": true,
+"name": &"BlueTank",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xudun")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2i56b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8yod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc3rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbjmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndbpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06c1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kff4")
 }],
 "loop": true,
-"name": &"Green Tank",
+"name": &"GreenTank",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("29")
+"texture": SubResource("AtlasTexture_egodi")
 }, {
 "duration": 1.0,
-"texture": SubResource("30")
+"texture": SubResource("AtlasTexture_o8hqw")
 }, {
 "duration": 1.0,
-"texture": SubResource("31")
+"texture": SubResource("AtlasTexture_uxmu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrxkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcgm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i5ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nxrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lkg4")
 }],
 "loop": true,
-"name": &"Red Tank",
+"name": &"RedTank",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(61, 44)
+size = Vector2(89, 66.75)
 
-[node name="player" type="Node2D" unique_id=1604843879]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajvvl"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3wmx"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="green tank" type="Node2D" unique_id=1604843879]
+scale = Vector2(0.7, 0.7)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1117408635]
 scale = Vector2(2, 2)
@@ -125,23 +216,31 @@ script = ExtResource("1")
 Bullet = ExtResource("2_ajvvl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1034302363]
+position = Vector2(15.25, -12.5)
+scale = Vector2(1.4692308, 1.5)
 sprite_frames = SubResource("32")
-animation = &"Green Tank"
+animation = &"GreenTank"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1115048784]
-position = Vector2(-0.5, -3)
+position = Vector2(14.5, -17.125)
 shape = SubResource("1")
 
 [node name="gas_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=1376911221]
-offset_left = -31.5
-offset_top = 19.5
-offset_right = 30.5
-offset_bottom = 46.5
+offset_left = -30.714285
+offset_top = 17.857143
+offset_right = 27.912714
+offset_bottom = 56.857143
+scale = Vector2(1.5400007, 1)
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_ajvvl")
 
 [node name="health_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=785936680]
-offset_left = -30.5
-offset_top = 48.0
-offset_right = 30.5
-offset_bottom = 75.0
+offset_left = -30.000004
+offset_top = 59.285717
+offset_right = 29.210995
+offset_bottom = 98.28571
+scale = Vector2(1.52, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_h3wmx")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=900687741]
+enabled = false

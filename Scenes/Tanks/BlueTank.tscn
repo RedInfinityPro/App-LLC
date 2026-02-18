@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://smmejbskxtea"]
+[gd_scene format=3 uid="uid://btbiqw84v0hf"]
 
 [ext_resource type="Script" uid="uid://b1nvr4cfq1qyk" path="res://Scripts/playerController_script.gd" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/Packages/BulletBlue.tscn" id="2"]
@@ -117,7 +117,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(61, 46)
 
-[node name="player" type="Node2D" unique_id=1333743125]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lobip"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5w7i"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="blue tank" type="Node2D" unique_id=1333743125]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1859267215]
 scale = Vector2(2, 2)
@@ -137,12 +151,15 @@ offset_left = -29.0
 offset_top = 20.5
 offset_right = 32.0
 offset_bottom = 47.5
+theme_override_styles/background = SubResource("StyleBoxFlat_lobip")
 
 [node name="health_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=562031271]
 offset_left = -29.5
-offset_top = 49.5
-offset_right = 30.5
-offset_bottom = 76.5
+offset_top = 48.5
+offset_right = 31.5
+offset_bottom = 75.5
+theme_override_styles/background = SubResource("StyleBoxFlat_o5w7i")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=2043208607]
 scale = Vector2(2, 2)
+enabled = false
