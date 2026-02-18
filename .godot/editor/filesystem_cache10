@@ -1,11 +1,9 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1771371663
-default_env.tres::Environment::3089405893813428316::1771371663::0::1::::<><><>0<>0<><>::
+::res://::1771385515
+default_env.tres::Environment::3089405893813428316::1771385692::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1771304105::0::1::::<><><>0<>0<><>::
-::res://Asset/::1771372237
+::res://Asset/::1771372349
 gas-tank.png::CompressedTexture2D::8708088799886439634::1770050010::1770345908::1::::<><><>0<>0<>29ebf58d06405e0914d990eadcd3a4b0<>res://.godot/imported/gas-tank.png-4e48644536db38d920dab68475dba228.ctex::
-grass2ground_01_1.png::CompressedTexture2D::7759088025848113436::1770048905::1770345908::1::::<><><>0<>0<>6d678de2ebc9601f2330fae6a73c3eab<>res://.godot/imported/grass2ground_01_1.png-81ce3ad7d2e7c73457be50ff3cea033e.ctex::
-icon.png::CompressedTexture2D::7614018191873911246::1769719577::1770345908::1::::<><><>0<>0<>33ab9f9e2099469c0fefe58888408817<>res://.godot/imported/icon.png-4e7e2c97505a421e6c47e787196852f6.ctex::
 mechanics.png::CompressedTexture2D::1319563863154247034::1770157436::1770345908::1::::<><><>0<>0<>7ab99204f1c9b4225f90d9cf491d435e<>res://.godot/imported/mechanics.png-8f08dafb6a9012fe2910507506a00c16.ctex::
 sheet.png::CompressedTexture2D::5087170205026123148::1771372237::1771372237::1::::<><><>0<>0<>2c2c0ed579699e546c5875b5b240c7a0<>res://.godot/imported/sheet.png-3b897bc7d1a12a8bf3469786ac2cc7fd.ctex::
 Tank Sheet 2.png::CompressedTexture2D::8294668672467414378::1771283010::1771283010::1::::<><><>0<>0<>6447c1cd482fb0327ca57ac02074d5ff<>res://.godot/imported/Tank Sheet 2.png-94f5dd9d40a6a75feb74508f7fd1822e.ctex::
@@ -76,21 +74,24 @@ Tank Sheet 2.png::CompressedTexture2D::8294668672467414378::1771283010::17712830
 64.png::CompressedTexture2D::2552208839561808270::1770003022::1770345908::1::::<><><>0<>0<>039c887452e38885a5b409052c576b26<>res://.godot/imported/64.png-8e5abf9193626ded8790e2fc70f9ea9d.ctex::
 65.png::CompressedTexture2D::3570496399159989577::1770003022::1770345908::1::::<><><>0<>0<>2d690b6915634626364261763fc02ee6<>res://.godot/imported/65.png-de97d0fca03c34c6c80e60b0b14fd2be.ctex::
 66.png::CompressedTexture2D::141534175972477999::1770003022::1770345908::1::::<><><>0<>0<>2b7f07e0581923dd800baa79b9fbc694<>res://.godot/imported/66.png-8879356fdc25883d147e5d843e3c7a71.ctex::
-::res://Scenes/::1771371662
-Map.tscn::PackedScene::2578433155784110469::1771371662::0::1::::<><><>0<>0<><>::uid://dbemu5gvmex0y::::res://Scenes/Tanks/GreenTank.tscn<>uid://f2371lqgjuep::::res://Scenes/Tanks/RedTank.tscn<>uid://smmejbskxtea::::res://Scenes/Tanks/BlueTank.tscn<>res://Scenes/Packages/GasTank.tscn<>res://Scenes/Packages/ToolKit.tscn
-::res://Scenes/Packages/::1771292305
+::res://Scenes/::1771380097
+Map.tscn::PackedScene::2578433155784110469::1771380097::0::1::::<><><>0<>0<><>::uid://dbemu5gvmex0y::::res://Scenes/Tanks/GreenTank.tscn<>uid://ejskt2uco8vf::::res://Scenes/Tanks/RedTank.tscn<>uid://btbiqw84v0hf::::res://Scenes/Tanks/BlueTank.tscn<>uid://600p2n8k72if::::res://Scenes/Packages/GasTank.tscn<>uid://ceqi7kib3yl7a::::res://Asset/sheet.png<>uid://vpcq4wqbssiu::::res://Scenes/Packages/ToolKit.tscn
+::res://Scenes/Packages/::1771380292
 BulletBlue.tscn::PackedScene::-1::1770345885::0::1::::<><><>0<>0<><>::res://Scripts/bullet_script.gd<>res://Asset/Laser Sprites/01.png
 BulletGreen.tscn::PackedScene::-1::1770345885::0::1::::<><><>0<>0<><>::res://Scripts/bullet_script.gd<>res://Asset/Laser Sprites/08.png
 BulletRed.tscn::PackedScene::-1::1770345885::0::1::::<><><>0<>0<><>::res://Scripts/bullet_script.gd<>res://Asset/Laser Sprites/02.png
-GasTank.tscn::PackedScene::-1::1770345885::0::1::::<><><>0<>0<><>::res://Scripts/gasTank_script.gd<>res://Asset/gas-tank.png
-ToolKit.tscn::PackedScene::-1::1770345885::0::1::::<><><>0<>0<><>::res://Scripts/toolKit_script.gd<>res://Asset/mechanics.png
-::res://Scenes/Tanks/::1771300313
-BlueTank.tscn::PackedScene::1288907940709200172::1771297872::0::1::::<><><>0<>0<><>::uid://b1nvr4cfq1qyk::::res://Scripts/playerController_script.gd<>res://Scenes/Packages/BulletBlue.tscn<>uid://dqf88mh43gwu1::::res://Asset/Tank Sheet 2.png
-GreenTank.tscn::PackedScene::7238474311464565574::1771300313::0::1::::<><><>0<>0<><>::uid://b1nvr4cfq1qyk::::res://Scripts/playerController_script.gd<>res://Scenes/Packages/BulletGreen.tscn<>uid://dqf88mh43gwu1::::res://Asset/Tank Sheet 2.png
-RedTank.tscn::PackedScene::408441022087507663::1771296031::0::1::::<><><>0<>0<><>::uid://b1nvr4cfq1qyk::::res://Scripts/playerController_script.gd<>res://Scenes/Packages/BulletRed.tscn<>uid://dqf88mh43gwu1::::res://Asset/Tank Sheet 2.png
-::res://Scripts/::1771300313
+GasTank.tscn::PackedScene::2229009748085166209::1771380292::0::1::::<><><>0<>0<><>::uid://bisrorva6ty4k::::res://Scripts/gasTank_script.gd<>uid://dwci7krjik7ba::::res://Asset/gas-tank.png
+ToolKit.tscn::PackedScene::1505082947289470988::1771378540::0::1::::<><><>0<>0<><>::uid://c5qm8g7765c8w::::res://Scripts/toolKit_script.gd<>uid://s2ha21xpgr27::::res://Asset/mechanics.png
+::res://Scenes/Tanks/::1771385513
+BlueTank.tscn::PackedScene::109487900207450479::1771385475::0::1::::<><><>0<>0<><>::uid://b1nvr4cfq1qyk::::res://Scripts/playerController_script.gd<>res://Scenes/Packages/BulletBlue.tscn<>uid://dqf88mh43gwu1::::res://Asset/Tank Sheet 2.png
+GreenTank1.tscn::PackedScene::2252290754019572441::1771378412::0::1::::<><><>0<>0<><>::uid://b1nvr4cfq1qyk::::res://Scripts/playerController_script.gd<>res://Scenes/Packages/BulletGreen.tscn<>uid://dqf88mh43gwu1::::res://Asset/Tank Sheet 2.png
+GreenTank.tscn::PackedScene::7238474311464565574::1771385692::0::1::::<><><>0<>0<><>::uid://b1nvr4cfq1qyk::::res://Scripts/playerController_script.gd<>res://Scenes/Packages/BulletGreen.tscn<>uid://df5mn5wpnjjil::::res://Scripts/Shader/Outline.gdshader<>uid://dqf88mh43gwu1::::res://Asset/Tank Sheet 2.png
+RedTank.tscn::PackedScene::300446578712855075::1771385692::0::1::::<><><>0<>0<><>::uid://b1nvr4cfq1qyk::::res://Scripts/playerController_script.gd<>res://Scenes/Packages/BulletGreen.tscn<>uid://df5mn5wpnjjil::::res://Scripts/Shader/Outline.gdshader<>uid://dqf88mh43gwu1::::res://Asset/Tank Sheet 2.png
+::res://Scripts/::1771384168
 bullet_script.gd::GDScript::3273011181356101961::1770345885::0::1::::<>Area2D<><>0<>0<><>::
 gasTank_script.gd::GDScript::2986148347742181644::1770345885::0::1::::<>Area2D<><>0<>0<><>::
 mainCamera2D_script.gd::GDScript::6393701965019963627::1771292335::0::1::::<>Camera2D<><>0<>0<><>::
 playerController_script.gd::GDScript::4239474470945561834::1771300313::0::1::::<>CharacterBody2D<><>0<>0<><>::
 toolKit_script.gd::GDScript::6912324621774573920::1770345885::0::1::::<>Area2D<><>0<>0<><>::
+::res://Scripts/Shader/::1771383320
+Outline.gdshader::Shader::7572891031510689207::1771383193::0::1::::<><><>0<>0<><>::

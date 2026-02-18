@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b1nvr4cfq1qyk" path="res://Scripts/playerController_script.gd" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/Packages/BulletGreen.tscn" id="2_0l8yv"]
+[ext_resource type="Shader" uid="uid://df5mn5wpnjjil" path="res://Scripts/Shaders/Outline.gdshader" id="3_x0v1w"]
 [ext_resource type="Texture2D" uid="uid://dqf88mh43gwu1" path="res://Asset/Tank Sheet 2.png" id="4_x0v1w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77536"]
+shader = ExtResource("3_x0v1w")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.5
 
 [sub_resource type="AtlasTexture" id="23"]
 region = Rect2(170, 201, 170, 201)
@@ -152,8 +158,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(61, 45)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0l8yv"]
+radius = 30.178349
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajvvl"]
 bg_color = Color(0, 0, 0, 1)
@@ -178,27 +184,29 @@ script = ExtResource("1")
 Bullet = ExtResource("2_0l8yv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1034302363]
+material = SubResource("ShaderMaterial_77536")
 sprite_frames = SubResource("32")
 animation = &"Red Tank"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1115048784]
 position = Vector2(-2, -3)
-shape = SubResource("1")
+shape = SubResource("CircleShape2D_0l8yv")
 
 [node name="gas_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=1376911221]
-offset_left = -32.5
-offset_top = 20.0
-offset_right = 28.5
-offset_bottom = 47.0
+offset_left = -31.428572
+offset_top = 25.714287
+offset_right = 29.571428
+offset_bottom = 52.714287
 size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_ajvvl")
 
 [node name="health_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=785936680]
-offset_left = -32.0
-offset_top = 48.0
-offset_right = 29.0
-offset_bottom = 75.0
+offset_left = -30.928572
+offset_top = 53.714287
+offset_right = 30.071428
+offset_bottom = 80.71429
 theme_override_styles/background = SubResource("StyleBoxFlat_h3wmx")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=900687741]
+texture_filter = 1
 enabled = false

@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b1nvr4cfq1qyk" path="res://Scripts/playerController_script.gd" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/Packages/BulletGreen.tscn" id="2_ajvvl"]
+[ext_resource type="Shader" uid="uid://df5mn5wpnjjil" path="res://Scripts/Shaders/Outline.gdshader" id="3_h3wmx"]
 [ext_resource type="Texture2D" uid="uid://dqf88mh43gwu1" path="res://Asset/Tank Sheet 2.png" id="4_h3wmx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mwim"]
+shader = ExtResource("3_h3wmx")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajvvl"]
 atlas = ExtResource("4_h3wmx")
@@ -190,8 +196,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(89, 66.75)
+[sub_resource type="CircleShape2D" id="CircleShape2D_h3wmx"]
+radius = 44.337524
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajvvl"]
 bg_color = Color(0, 0, 0, 1)
@@ -216,29 +222,30 @@ script = ExtResource("1")
 Bullet = ExtResource("2_ajvvl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1034302363]
-position = Vector2(15.25, -12.5)
+texture_filter = 1
+material = SubResource("ShaderMaterial_7mwim")
 scale = Vector2(1.4692308, 1.5)
 sprite_frames = SubResource("32")
 animation = &"GreenTank"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1115048784]
-position = Vector2(14.5, -17.125)
-shape = SubResource("1")
+position = Vector2(-0.7142855, -2.1428573)
+shape = SubResource("CircleShape2D_h3wmx")
 
 [node name="gas_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=1376911221]
-offset_left = -30.714285
-offset_top = 17.857143
-offset_right = 27.912714
-offset_bottom = 56.857143
+offset_left = -44.285717
+offset_top = 40.0
+offset_right = 14.341282
+offset_bottom = 79.0
 scale = Vector2(1.5400007, 1)
 size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_ajvvl")
 
 [node name="health_ProgressBar" type="ProgressBar" parent="CharacterBody2D" unique_id=785936680]
-offset_left = -30.000004
-offset_top = 59.285717
-offset_right = 29.210995
-offset_bottom = 98.28571
+offset_left = -43.571438
+offset_top = 81.42857
+offset_right = 15.639561
+offset_bottom = 120.428566
 scale = Vector2(1.52, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_h3wmx")
 

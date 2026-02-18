@@ -6,3 +6,7 @@ res://Scenes/Tanks/BlueTank.tscn
 res://Scenes/Packages/ToolKit.tscn
 res://Scenes/Packages/GasTank.tscn
 res://Scenes/Tanks/GreenTank1.tscn
+res://Scenes/Tanks/Outline.gdshader
+res://Scripts/tankOutline_script.gd
+res://Scripts/playerController_script.gd
+res://Scripts/Shaders/Outline.gdshader

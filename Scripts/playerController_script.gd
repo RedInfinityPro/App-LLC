@@ -3,22 +3,27 @@ extends CharacterBody2D
 var is_player: bool
 @onready var gasBar = $gas_ProgressBar
 @onready var healthBar = $health_ProgressBar
+@onready var sprite = $AnimatedSprite2D
+@onready var shader_material: ShaderMaterial = sprite.material
 @export var Bullet : PackedScene
 @export var speed := 150
 @export var gallons_per_second := 0.01
 @export var rotation_speed := 3.0
 var newVelocity := Vector2.ZERO
 var using_gas := false
+var is_pulsing := false
 var seedNumber = generate_uid()
 # animation
 var counter = 0
 var angle_look = 0
+var tween = create_tween()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gasBar.max_value = 100
 	gasBar.value = 100
 	healthBar.max_value = 100
 	healthBar.value = 100
+	shader_material = shader_material.duplicate()
 
 func generate_uid():
 	return str(Time.get_unix_time_from_system(), "_", randi())
@@ -30,7 +35,24 @@ func use_gas():
 func gain_gas(amount_per_second):
 	if gasBar.value < gasBar.max_value:
 		gasBar.value += amount_per_second
+		if not is_pulsing:
+			is_pulsing = true
+			pulse_outline()
+	else:
+		if is_pulsing:
+			is_pulsing = false
+			stop_pulse()
+	
+func pulse_outline():
+	tween.kill()
+	tween = create_tween().set_loops()
+	tween.tween_property(shader_material, "shader_parameter/line_thickness", 1.0, 0.5)
+	tween.tween_property(shader_material, "shader_parameter/line_thickness", 0.0, 0.5)
 
+func stop_pulse():
+	tween.kill()
+	shader_material.set_shader_parameter("line_thickness", 0.0)
+	
 func loss_health():
 	if healthBar.value > 0:
 		healthBar.value -= 1
